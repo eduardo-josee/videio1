@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello World App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        h1 {
+            color: #0056b3;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        input[type="text"], input[type="email"] {
+            padding: 8px;
+            margin-right: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 200px;
+        }
+        p {
+            margin-top: 15px;
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+        #responseGet, #responsePost {
+            background-color: #e9ecef;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ced4da;
+            white-space: pre-wrap; /* Para preservar quebras de linha */
+            word-wrap: break-word; /* Para quebrar palavras longas */
+        }
+    </style>
+</head>
+<body>
+    <h1> API Eduzera </h1>
+
+    <div class="container">
+        <h2>Testar GET /Hello_World</h2>
+        <button onclick="getHelloWorld()">Chamar GET</button>
+        <p>Resposta:</p>
+        <div id="responseGet"></div>
+    </div>
+
+    <div class="container">
+        <h2>Testar POST /Hello_World/{id}</h2>
+        <label for="postUserId">ID para o POST:</label>
+        <input type="text" id="postUserId" value="123">
+        <br><br>
+        <label for="postUserName">Nome do Usuário:</label>
+        <input type="text" id="postUserName" value="Maria">
+        <br><br>
+        <label for="postUserEmail">Email do Usuário:</label>
+        <input type="email" id="postUserEmail" value="maria@example.com">
+        <br><br>
+        <button onclick="postHelloWorld()">Chamar POST</button>
+        <p>Resposta:</p>
+        <div id="responsePost"></div>
+    </div>
+
+    <script>
+        const API_BASE_URL = 'http://localhost:8080/Hello_World'; // Ajuste a porta se sua API estiver em outra
+
+        async function getHelloWorld() {
+            try {
+                const response = await fetch(API_BASE_URL);
+                const data = await response.text(); // Porque o seu GET retorna uma String simples
+                document.getElementById('responseGet').textContent = data;
+            } catch (error) {
+                console.error('Erro ao chamar GET:', error);
+                document.getElementById('responseGet').textContent = 'Erro ao chamar a API: ' + error.message;
+            }
+        }
+
+        async function postHelloWorld() {
+            const userId = document.getElementById('postUserId').value;
+            const userName = document.getElementById('postUserName').value;
+            const userEmail = document.getElementById('postUserEmail').value;
+
+            // Criar o objeto User de acordo com a sua classe User
+            const userBody = {
+                nome: userName, // Use 'nome' para bater com a sua classe User
+                email: userEmail
+            };
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/${userId}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(userBody)
+                });
+
+                const data = await response.text(); // Porque o seu POST retorna uma String simples
+                document.getElementById('responsePost').textContent = data;
+            } catch (error) {
+                console.error('Erro ao chamar POST:', error);
+                document.getElementById('responsePost').textContent = 'Erro ao chamar a API: ' + error.message;
+            }
+        }
+    </script>
+</body>
+</html>
