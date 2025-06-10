@@ -1,0 +1,34 @@
+# 📹 video1
+
+Uma API simples desenvolvida com **Java 21** e **Spring Boot** para testar requisições **GET** e **POST**. Ideal para quem está começando no mundo das APIs REST.
+Eu utilizo esse video como base para fazer a criação do projeto:
+
+CURSO DE SPRING para INICIANTES | Tutorial Completo de Java Spring
+Fernanda Kipper | Dev
+https://www.youtube.com/watch?v=YY_hf0FOIcU
+
+---
+
+## 🚀 Tecnologias Utilizadas
+
+- ☕ Java 21
+- 🌱 Spring Boot
+- 📦 Maven
+
+---
+
+## 📌 Endpoints Disponíveis
+
+| Método | Rota                        | Descrição                                     |
+|--------|-----------------------------|-----------------------------------------------|
+| GET    | `/Hello_World`              | Retorna uma saudação simples com "Eduzera"    |
+| POST   | `/Hello_World/{id}`         | Recebe um JSON com nome e email, retorna msg  |
+
+---
+
+## 🧪 Como Testar a API
+
+1. Clone o repositório:
+
+```bash
+git clone https://github.com/SEU_USUARIO/video1.git
