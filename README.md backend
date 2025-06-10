@@ -32,3 +32,7 @@ https://www.youtube.com/watch?v=YY_hf0FOIcU
 
 ```bash
 git clone https://github.com/SEU_USUARIO/video1.git
+para testar voçê deve clicar no botão chamar get e ele ira retornar hello word + nome, no caso o nome que eu coloquei no codigo.
+depois é necessario adicionar um usuario novo, ou seja com um id, nome e email. após isso basta clicar no botão chamar post
+que o nome e o id do usario irá aparecer no retangulo abaixo com uma mensagem de hello word.
+
